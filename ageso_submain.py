@@ -7,6 +7,7 @@ def archivos():
   archivos.remove("Plantilla_0.xlsx")
   archivos.remove(".config")
   archivos.remove("sample_data")
+  print(archivos)
   try:
     archivos.remove(".ipynb_checkpoints")
     archivos.remove("ageso_submain.py")
