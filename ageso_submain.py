@@ -82,46 +82,51 @@ editor_valores(hoja_informacion, "C", filas_informacion, nombres)
 editor_valores(hoja_informacion, "D", filas_informacion, documentos)
 editor_valores(hoja_informacion, "E", filas_informacion, ocupacion)
 
+### SEXOS ###
+
 def sexos(): 
-  ############ SEXOS ##########
-sexos = list(datos["genero"])
+  sexos = list(datos["genero"])
 
-#Clasificador y contador
-elementos_sexos = ["F", "M"]
-etiquetas_sexos = ["Femenino", "Masculino"]
-numero_femenino = sexos.count(elementos_sexos[0])
-numero_masculino = sexos.count(elementos_sexos[1])
+  #Clasificador y contador
+  elementos_sexos = ["F", "M"]
+  etiquetas_sexos = ["Femenino", "Masculino"]
+  numero_femenino = sexos.count(elementos_sexos[0])
+  numero_masculino = sexos.count(elementos_sexos[1])
+  
+  #Validación
+  if numero_femenino + numero_masculino != total_trabajadores:
+    popup("Error: la suma de los sexos es diferente al número total de trabajadores")
+  
+  #Porcentajes
+  porcentaje_femenino = round(numero_femenino / total_trabajadores * 100)
+  porcentaje_masculino = round(numero_masculino / total_trabajadores * 100)
+  porcentajes_sexos = [porcentaje_femenino, porcentaje_masculino]
+  orden_sexos = ordenar(porcentajes_sexos, etiquetas_sexos) #diccionario que tiene por clave las etiquetas y por valor los porcentajes ordenados
+  S_may = clave_valor(orden_sexos, 0)[0] #Sexo mayor
+  S_men = clave_valor(orden_sexos, 1)[0] #Sexo menor
+  P_may = clave_valor(orden_sexos, 0)[1] #Porcentaje mayor
+  P_men = clave_valor(orden_sexos, 1)[1] #Porcentaje menor
+  
+  b1 = f"De acuerdo con el sexo, se observó que el {P_may}% de la población es de Sexo {S_may}, mientras que un {P_men}% es de Sexo {S_men}."
+  b2 = f"Se observó que el {P_may}% de la población es de Sexo {S_may}, mientras que un {P_men}% es de Sexo {S_men}."
+  b3 = f"En relación con el sexo, se observó que el {P_may}% de la población es de Sexo {S_may} y un {P_men}% es de Sexo {S_men}."
+  B = [b1, b2, b3]
+  conclusion_sexos = B[random.randint(0, len(B)-1)]
+  
+  #Editor
+  hoja_sexos = plantilla["SEX"]
+  
+  v_columnas_sexos = "B"
+  v_filas_sexos = [6, 7, 8]
+  v_valores_sexos = [numero_femenino, numero_masculino, numero_femenino + numero_masculino]
+  p_columnas_sexos = "C"
+  p_filas_sexos = [6, 7, 8]
+  p_valores_sexos = [porcentaje_femenino, porcentaje_masculino, 100]
+  
+  editor_valores(hoja_sexos, v_columnas_sexos, v_filas_sexos, v_valores_sexos)
+  editor_porcentajes(hoja_sexos, p_columnas_sexos, p_filas_sexos,p_valores_sexos)
+  editor_conclusion(hoja_sexos, "A", 10, conclusion_sexos)
+  return 
 
-#Validación
-if numero_femenino + numero_masculino != total_trabajadores:
-  popup("Error: la suma de los sexos es diferente al número total de trabajadores")
-
-#Porcentajes
-porcentaje_femenino = round(numero_femenino / total_trabajadores * 100)
-porcentaje_masculino = round(numero_masculino / total_trabajadores * 100)
-porcentajes_sexos = [porcentaje_femenino, porcentaje_masculino]
-orden_sexos = ordenar(porcentajes_sexos, etiquetas_sexos) #diccionario que tiene por clave las etiquetas y por valor los porcentajes ordenados
-S_may = clave_valor(orden_sexos, 0)[0] #Sexo mayor
-S_men = clave_valor(orden_sexos, 1)[0] #Sexo menor
-P_may = clave_valor(orden_sexos, 0)[1] #Porcentaje mayor
-P_men = clave_valor(orden_sexos, 1)[1] #Porcentaje menor
-
-b1 = f"De acuerdo con el sexo, se observó que el {P_may}% de la población es de Sexo {S_may}, mientras que un {P_men}% es de Sexo {S_men}."
-b2 = f"Se observó que el {P_may}% de la población es de Sexo {S_may}, mientras que un {P_men}% es de Sexo {S_men}."
-b3 = f"En relación con el sexo, se observó que el {P_may}% de la población es de Sexo {S_may} y un {P_men}% es de Sexo {S_men}."
-B = [b1, b2, b3]
-conclusion_sexos = B[random.randint(0, len(B)-1)]
-
-#Editor
-hoja_sexos = plantilla["SEX"]
-
-v_columnas_sexos = "B"
-v_filas_sexos = [6, 7, 8]
-v_valores_sexos = [numero_femenino, numero_masculino, numero_femenino + numero_masculino]
-p_columnas_sexos = "C"
-p_filas_sexos = [6, 7, 8]
-p_valores_sexos = [porcentaje_femenino, porcentaje_masculino, 100]
-
-editor_valores(hoja_sexos, v_columnas_sexos, v_filas_sexos, v_valores_sexos)
-editor_porcentajes(hoja_sexos, p_columnas_sexos, p_filas_sexos,p_valores_sexos)
-editor_conclusion(hoja_sexos, "A", 10, conclusion_sexos)
+  def guardar_archivo():
+    plantilla.save(ruta_datos[3:])
