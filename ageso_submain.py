@@ -9,6 +9,7 @@ def submain(numero_de_archivos):
   archivos.remove("sample_data")
   try:
     archivos.remove(".ipynb_checkpoints")
+    archivos.remove("ageso_submain.py")
   except:
     pass
 
