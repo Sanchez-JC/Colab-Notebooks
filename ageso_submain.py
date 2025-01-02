@@ -1,5 +1,3 @@
-
-
 def submain(numero_de_archivos):
   import pandas as pd
   import openpyxl
@@ -19,5 +17,5 @@ def submain(numero_de_archivos):
   ruta_plantilla = "/content/Plantilla_0.xlsx"
   plantilla = openpyxl.load_workbook(ruta_plantilla)
   total_trabajadores = datos.shape[numero_de_archivos]
-  print(archivos)
+  return archivos
 
