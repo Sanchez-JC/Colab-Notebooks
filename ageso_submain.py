@@ -12,7 +12,7 @@ def archivos():
     archivos.remove("ageso_submain.py")
   except:
     pass
-  return
+  return archivos
 
 def importar_abrir(nombre_archivo): #IMPORTA Y ABRE ARCHIVO
   ruta_datos = archivos[nombre_archivo]
