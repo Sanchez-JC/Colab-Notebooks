@@ -12,9 +12,9 @@ def archivos():
     archivos.remove("ageso_submain.py")
   except:
     pass
-return
+  return
 
- def importar_abrir(nombre_archivo) #IMPORTA Y ABRE ARCHIVO
+def importar_abrir(nombre_archivo): #IMPORTA Y ABRE ARCHIVO
   ruta_datos = archivos[nombre_archivo]
   datos = pd.read_excel(ruta_datos)
   ruta_plantilla = "/content/Plantilla_0.xlsx"
