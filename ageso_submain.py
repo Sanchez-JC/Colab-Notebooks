@@ -4,16 +4,12 @@ import os
 
 def archivos():
   archivos = os.listdir()
-  archivos.remove("Plantilla_0.xlsx")
-  archivos.remove(".config")
-  archivos.remove("sample_data")
-  print(archivos)
-  try:
-    archivos.remove(".ipynb_checkpoints")
-    archivos.remove("ageso_submain.py")
-    archivos.remove("__pycache__")
-  except:
-    pass
+  elementos_a_eliminar = ["Plantilla_0.xlsx", ".config", "sample_data", ".ipynb_checkpoints", "ageso_submain.py", "__pycache__"]
+  for elemento_a_eliminar in elementos_a_eliminar:
+    try:
+      archivos.remove(elemento_a_eliminar)
+    except:
+      pass
   return archivos
 
 def importar_abrir(nombre_archivo): #IMPORTA Y ABRE ARCHIVO
