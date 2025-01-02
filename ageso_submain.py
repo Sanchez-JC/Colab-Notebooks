@@ -1,3 +1,6 @@
+import pandas as pd
+import os
+
 def submain(numero_de_archivos):
   archivos = os.listdir()
   archivos.remove("Plantilla_0.xlsx")
