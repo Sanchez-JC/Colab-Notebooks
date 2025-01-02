@@ -1,9 +1,9 @@
-!pip install os
-import pandas as pd
-import openpyxl
-import os
+
 
 def submain(numero_de_archivos):
+  import pandas as pd
+  import openpyxl
+  import os
   archivos = os.listdir()
   archivos.remove("Plantilla_0.xlsx")
   archivos.remove(".config")
