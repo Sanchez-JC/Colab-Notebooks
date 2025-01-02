@@ -10,6 +10,7 @@ def archivos():
   try:
     archivos.remove(".ipynb_checkpoints")
     archivos.remove("ageso_submain.py")
+    archivos.remove("__pycache__")
   except:
     pass
   return archivos
