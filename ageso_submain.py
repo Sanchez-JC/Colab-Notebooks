@@ -2,7 +2,7 @@ import pandas as pd
 import openpyxl
 import os
 
-def submain(numero_de_archivos):
+def archivos():
   archivos = os.listdir()
   archivos.remove("Plantilla_0.xlsx")
   archivos.remove(".config")
@@ -12,12 +12,13 @@ def submain(numero_de_archivos):
     archivos.remove("ageso_submain.py")
   except:
     pass
+return
 
-  #IMPORTA Y ABRE ARCHIVO
-  ruta_datos = archivos[numero_de_archivos]
+ def importar_abrir(nombre_archivo) #IMPORTA Y ABRE ARCHIVO
+  ruta_datos = archivos[nombre_archivo]
   datos = pd.read_excel(ruta_datos)
   ruta_plantilla = "/content/Plantilla_0.xlsx"
   plantilla = openpyxl.load_workbook(ruta_plantilla)
-  total_trabajadores = datos.shape[numero_de_archivos]
-  return archivos
+  total_trabajadores = datos.shape[nombre_archivo]
+  return
 
