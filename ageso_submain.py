@@ -1,4 +1,3 @@
-!pip install cie
 import pandas as pd
 import openpyxl
 import random
