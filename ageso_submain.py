@@ -10,10 +10,6 @@ def listar_directorio():
       archivos.remove(elemento_a_eliminar)
     except:
       pass
-  with open("text.txt","w") as file:
-    file.write("I am learning Python!\n")
-    file.write("I am really enjoying it!\n")
-    file.write("And I want to add more lines to say how much I like it")
   return archivos
 
 ### FUNCIONES AUXILIARES ###
@@ -56,7 +52,13 @@ def get_patology_name(code):
     name = CIE.info(code = code)["description"] #Obtiene el nombre de la patología asignada a dicho código de patología
   return name
 
-
+def popup(mensaje):
+    popup_html = f"""
+    <script>
+    alert("{mensaje}");
+    </script>
+    """
+    display(HTML(popup_html))
     
 archivos = listar_directorio()
 def main(indice_archivos):
@@ -82,7 +84,6 @@ def main(indice_archivos):
   editor_valores(hoja_informacion, "C", filas_informacion, nombres)
   editor_valores(hoja_informacion, "D", filas_informacion, documentos)
   editor_valores(hoja_informacion, "E", filas_informacion, ocupacion)
-  return
 
 ### SEXOS ###
 
