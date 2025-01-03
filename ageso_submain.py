@@ -1,6 +1,12 @@
+!pip install cie
 import pandas as pd
 import openpyxl
+import random
+from cie.cie10 import CIECodes #Importar librería CIE10
+import re
+import itertools
 import os
+from IPython.display import display, HTML
 
 def listar_directorio():
   archivos = os.listdir()
