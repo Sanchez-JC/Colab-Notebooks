@@ -12,14 +12,6 @@ def listar_directorio():
       pass
   return archivos
 
-def importar_abrir(nombre_archivo): #IMPORTA Y ABRE ARCHIVO
-  ruta_datos = archivos[nombre_archivo]
-  datos = pd.read_excel(ruta_datos)
-  ruta_plantilla = "/content/Plantilla_0.xlsx"
-  plantilla = openpyxl.load_workbook(ruta_plantilla)
-  total_trabajadores = datos.shape[nombre_archivo]
-  return 
-
 ### FUNCIONES AUXILIARES ###
 
 def ordenar(lista_porcentajes, lista_etiquetas): #El número de elementos es la cantidad de elementos diferentes de la lista. P. ej: para los sexos, el numero es 2, puesto que hay solo dos elementos diferentes "F" y "M". Lista_de_porcentajes es una lista con los porcentajes de la clase
@@ -60,17 +52,19 @@ def get_patology_name(code):
     name = CIE.info(code = code)["description"] #Obtiene el nombre de la patología asignada a dicho código de patología
   return name
 
-def popup(mensaje):
-    popup_html = f"""
-    <script>
-    alert("{mensaje}");
-    </script>
-    """
-    display(HTML(popup_html)) 
 
+    
+archivos = listar_directorio()
+def main(indice_archivos):
+
+ #IMPORTA Y ABRE ARCHIVO
+  ruta_datos = archivos[indice_archivos]
+  datos = pd.read_excel(ruta_datos)
+  ruta_plantilla = "/content/Plantilla_0.xlsx"
+  plantilla = openpyxl.load_workbook(ruta_plantilla)
+  total_trabajadores = datos.shape[indice_archivos]
+  
 ##### TABLA INFORMACIÓN TRABAJADORES #####
-
-def tabla_info_trabajadores():
 
   fechas = list(datos["fecha"])
   nombres = list(datos["nombre"])
@@ -88,7 +82,6 @@ def tabla_info_trabajadores():
 
 ### SEXOS ###
 
-def sexos(): 
   sexos = list(datos["genero"])
 
   #Clasificador y contador
@@ -130,7 +123,4 @@ def sexos():
   editor_valores(hoja_sexos, v_columnas_sexos, v_filas_sexos, v_valores_sexos)
   editor_porcentajes(hoja_sexos, p_columnas_sexos, p_filas_sexos,p_valores_sexos)
   editor_conclusion(hoja_sexos, "A", 10, conclusion_sexos)
-  return 
-
-def guardar_archivo():
-  plantilla.save(ruta_datos[3:])
+  return plantilla.save(ruta_datos[3:])
