@@ -10,6 +10,10 @@ def listar_directorio():
       archivos.remove(elemento_a_eliminar)
     except:
       pass
+  with open("text.txt","w") as file:
+    file.write("I am learning Python!\n")
+    file.write("I am really enjoying it!\n")
+    file.write("And I want to add more lines to say how much I like it")
   return archivos
 
 ### FUNCIONES AUXILIARES ###
