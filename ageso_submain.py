@@ -132,5 +132,5 @@ def sexos():
   editor_conclusion(hoja_sexos, "A", 10, conclusion_sexos)
   return 
 
-  def guardar_archivo():
-    plantilla.save(ruta_datos[3:])
+def guardar_archivo():
+  plantilla.save(ruta_datos[3:])
