@@ -2,7 +2,7 @@ import pandas as pd
 import openpyxl
 import os
 
-def archivos():
+def listar_directorio():
   archivos = os.listdir()
   elementos_a_eliminar = ["Plantilla_0.xlsx", ".config", "sample_data", ".ipynb_checkpoints", "ageso_submain.py", "__pycache__"]
   for elemento_a_eliminar in elementos_a_eliminar:
