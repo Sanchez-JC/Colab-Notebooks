@@ -69,18 +69,22 @@ def popup(mensaje):
     display(HTML(popup_html)) 
 
 ##### TABLA INFORMACIÓN TRABAJADORES #####
-fechas = list(datos["fecha"])
-nombres = list(datos["nombre"])
-documentos = list(datos["documento"])
-ocupacion = list(datos["ocupacion"])
 
-hoja_informacion = plantilla["TRABAJ"]
-filas_informacion = [i for i in range(3, len(fechas)+3)]
+def tabla_info_trabajadores():
 
-editor_valores(hoja_informacion, "B", filas_informacion, fechas)
-editor_valores(hoja_informacion, "C", filas_informacion, nombres)
-editor_valores(hoja_informacion, "D", filas_informacion, documentos)
-editor_valores(hoja_informacion, "E", filas_informacion, ocupacion)
+  fechas = list(datos["fecha"])
+  nombres = list(datos["nombre"])
+  documentos = list(datos["documento"])
+  ocupacion = list(datos["ocupacion"])
+  
+  hoja_informacion = plantilla["TRABAJ"]
+  filas_informacion = [i for i in range(3, len(fechas)+3)]
+  
+  editor_valores(hoja_informacion, "B", filas_informacion, fechas)
+  editor_valores(hoja_informacion, "C", filas_informacion, nombres)
+  editor_valores(hoja_informacion, "D", filas_informacion, documentos)
+  editor_valores(hoja_informacion, "E", filas_informacion, ocupacion)
+  return
 
 ### SEXOS ###
 
