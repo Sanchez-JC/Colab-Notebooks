@@ -57,8 +57,15 @@ def get_patology_name(code):
     name = CIE.info(code = code)["description"] #Obtiene el nombre de la patología asignada a dicho código de patología
   return name
 
+def popup(mensaje):
+    popup_html = f"""
+    <script>
+    alert("{mensaje}");
+    </script>
+    """
+    display(HTML(popup_html))
 
-    
+### FUNCIÓN PRINCIPAL ###   
 archivos = listar_directorio()
 def main(indice_archivos):
 
