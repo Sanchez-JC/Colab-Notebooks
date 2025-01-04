@@ -708,8 +708,8 @@ def main(indice_archivos):
   total_riesgos_teoricos = sum(list(str(i).count("FR:") for i in riesgos))
 
   #Validación
-  if sum(elementos_riesgos) != total_riesgos_teoricos:
-    popup(f"Advertencia: la suma de los riesgos laborales es diferente al número total de Riesgos en {ruta_datos[3:]}")
+  #if sum(elementos_riesgos) != total_riesgos_teoricos:
+    #popup(f"Advertencia: la suma de los riesgos laborales es diferente al número total de Riesgos en {ruta_datos[3:]}")
 
   #Porcentajes
   porcentaje_psicosociales = round(elementos_riesgos[0] / total_riesgos * 100)
