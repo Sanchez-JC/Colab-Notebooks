@@ -68,9 +68,7 @@ def popup(mensaje):
 ### FUNCIÓN PRINCIPAL ###
 archivos = listar_directorio()
 def main(indice_archivos):
-  print(archivos)
-  print(indice_archivos)
-  print(archivos[indice_archivos])
+
  #IMPORTA Y ABRE ARCHIVO
   ruta_datos = archivos[indice_archivos]
   datos = pd.read_excel(ruta_datos)
