@@ -9,7 +9,7 @@ from IPython.display import display, HTML
 
 def listar_directorio():
   archivos = os.listdir()
-  elementos_a_eliminar = ["Plantilla_0.xlsx", ".config", "sample_data", ".ipynb_checkpoints", "ageso_submain.py", "__pycache__"]
+  elementos_a_eliminar = ["Plantilla_0.xlsx", ".config", "sample_data", ".ipynb_checkpoints", "ageso.py", "__pycache__"]
   for elemento_a_eliminar in elementos_a_eliminar:
     try:
       archivos.remove(elemento_a_eliminar)
