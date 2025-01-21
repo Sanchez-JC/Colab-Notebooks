@@ -633,6 +633,10 @@ def main(indice_archivos):
   #### ACCIDENTES LABORALES ####
   accidentes = list(datos["obs_antecedpatocupacional"])
 
+  for i in accidentes:
+  if type(i) == float:
+    accidentes[accidentes.index(i)] = "No haber" #En caso de que haya floats o nan los cambia
+
   #Clasificador y contador
   etiquetas_accidentes = ["No haber", "Si haber"]
   elementos_accidentes = [sum(1 for i in accidentes if i[0:2] == "No"),
