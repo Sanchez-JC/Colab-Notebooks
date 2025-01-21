@@ -75,6 +75,7 @@ def main(indice_archivos):
   ruta_plantilla = "/content/Plantilla_0.xlsx"
   plantilla = openpyxl.load_workbook(ruta_plantilla)
   total_trabajadores = datos.shape[0]
+  print("Trabajando en:", ruta_datos[3:], "...")
 
 ##### TABLA INFORMACIÓN TRABAJADORES #####
 
