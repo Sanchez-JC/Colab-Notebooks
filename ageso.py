@@ -564,7 +564,8 @@ def main(indice_archivos):
   etiquetas_imc = ["Bajo Peso", "Normal", "Sobrepeso", "Obesidad I o Leve", "Obesidad II o Moderada", "Obesidad III o Severa", "Sin información"]
   elementos_imc = [sum(1 for i in imc if i <= 18), sum(1 for i in imc if 18 <= i < 25),
                    sum(1 for i in imc if 25 <= i < 30), sum(1 for i in imc if 30 <= i < 35),
-                   sum(1 for i in imc if 35 <= i < 40), sum(1 for i in imc if i >= 40), sum(1 for i in imc if type(i) != "float")]
+                   sum(1 for i in imc if 35 <= i < 40), sum(1 for i in imc if i >= 40)]
+  elementos_imc.append(abs(total_trabajadores - len(elementos_imc))
 
   #Validación
   if sum(elementos_imc) != total_trabajadores:
@@ -577,7 +578,7 @@ def main(indice_archivos):
   porcentaje_obesidad_1 = round(elementos_imc[3] / total_trabajadores * 100)
   porcentaje_obesidad_2 = round(elementos_imc[4] / total_trabajadores * 100)
   porcentaje_obesidad_3 = round(elementos_imc[5] / total_trabajadores * 100)
-  porcentaje_sin_informacion = round(elementos_imc[6] / total_trabajadres * 100)
+  porcentaje_sin_informacion = round(elementos_imc[6] / total_trabajadores * 100)
   porcentajes_imc = [porcentaje_bajo, porcentaje_normal, porcentaje_sobrepeso, porcentaje_obesidad_1, porcentaje_obesidad_2, porcentaje_obesidad_3]
   orden_imc = ordenar(porcentajes_imc, etiquetas_imc)
 
