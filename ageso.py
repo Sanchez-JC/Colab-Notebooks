@@ -561,10 +561,10 @@ def main(indice_archivos):
   imc = list(datos["imc"])
 
   #Clasificador y contador
-  etiquetas_imc = ["Bajo Peso", "Normal", "Sobrepeso", "Obesidad I o Leve", "Obesidad II o Moderada", "Obesidad III o Severa"]
+  etiquetas_imc = ["Bajo Peso", "Normal", "Sobrepeso", "Obesidad I o Leve", "Obesidad II o Moderada", "Obesidad III o Severa", "Sin información"]
   elementos_imc = [sum(1 for i in imc if i <= 18), sum(1 for i in imc if 18 <= i < 25),
                    sum(1 for i in imc if 25 <= i < 30), sum(1 for i in imc if 30 <= i < 35),
-                   sum(1 for i in imc if 35 <= i < 40), sum(1 for i in imc if i >= 40)]
+                   sum(1 for i in imc if 35 <= i < 40), sum(1 for i in imc if i >= 40), sum(1 for i in imc if type(i) != "float"]
 
   #Validación
   if sum(elementos_imc) != total_trabajadores:
@@ -577,6 +577,7 @@ def main(indice_archivos):
   porcentaje_obesidad_1 = round(elementos_imc[3] / total_trabajadores * 100)
   porcentaje_obesidad_2 = round(elementos_imc[4] / total_trabajadores * 100)
   porcentaje_obesidad_3 = round(elementos_imc[5] / total_trabajadores * 100)
+  porcentaje_sin_informacion = round(elementos_imc[6] / total_trabajadres * 100)
   porcentajes_imc = [porcentaje_bajo, porcentaje_normal, porcentaje_sobrepeso, porcentaje_obesidad_1, porcentaje_obesidad_2, porcentaje_obesidad_3]
   orden_imc = ordenar(porcentajes_imc, etiquetas_imc)
 
@@ -587,15 +588,17 @@ def main(indice_archivos):
   IM4 = clave_valor(orden_imc, 3)[0] #label
   IM5 = clave_valor(orden_imc, 4)[0] #label
   IM6 = clave_valor(orden_imc, 5)[0] #label
+  IM7 = clave_valor(orden_imc, 6)[0] #label
   IP1 = clave_valor(orden_imc, 0)[1] #porcentaje
   IP2 = clave_valor(orden_imc, 1)[1] #porcentaje
   IP3 = clave_valor(orden_imc, 2)[1] #porcentaje
   IP4 = clave_valor(orden_imc, 3)[1] #porcentaje
   IP5 = clave_valor(orden_imc, 4)[1] #porcentaje
   IP6 = clave_valor(orden_imc, 5)[1] #porcentaje
+  IP7 = clave_valor(orden_imc, 6)[1] #porcentaje
 
-  etiquetas_imc_ordenadas = [IM1, IM2, IM3, IM4, IM5, IM6]
-  porcentajes_imc_ordenados = [IP1, IP2, IP3, IP4, IP5, IP6]
+  etiquetas_imc_ordenadas = [IM1, IM2, IM3, IM4, IM5, IM6, IM7]
+  porcentajes_imc_ordenados = [IP1, IP2, IP3, IP4, IP5, IP6, IP7]
   valores_imc_ordenados = elementos_imc
 
   intro_0_imc = "De acuerdo con el peso y estatura de los trabajadores se calculó el Índice de Masa Corporal (IMC), donde se encontró que el "
@@ -604,13 +607,14 @@ def main(indice_archivos):
   intro_3_imc = "Según el peso y estatura de los trabajadores, se realizó el cálculo del Índice de Masa Corporal (IMC), donde se encontró que el "
   intros_imc = [intro_0_imc, intro_1_imc, intro_2_imc, intro_3_imc]
 
-  conclu_imc_0 = f"{IP1}% de la población se encuentra en {IM1}, un {IP2}% están en {IM2}, {IP3}% se encuentran en {IM3}, {IP4}% en {IM4}, {IP5}% en {IM5} y un {IP6}% se encuentran en {IM6}"
-  conclu_imc_1 = f"{IP1}% de la población se encuentra en {IM1}, un {IP2}% están en {IM2}, {IP3}% se encuentran en {IM3}, {IP4}% en {IM4} y un {IP5}% se encuentran en {IM5}"
-  conclu_imc_2 = f"{IP1}% de la población se encuentra en {IM1}, un {IP2}% están en {IM2}, {IP3}% se encuentran en {IM3} y un {IP4}% se encuentran en {IM4}"
-  conclu_imc_3 = f"{IP1}% de la población se encuentra en {IM1}, un {IP2}% están en {IM2} y un {IP3}% se encuentran en {IM3}"
-  conclu_imc_4 = f"{IP1}% de la población se encuentra en {IM1} y un {IP2}% están en {IM2}"
-  conclu_imc_5 = f"{IP1}% de la población se encuentra en {IM1}"
-  conclu_imc = [conclu_imc_0, conclu_imc_1, conclu_imc_2, conclu_imc_3, conclu_imc_4, conclu_imc_5]
+  conclu_imc_0 = f"{IP1}% de la población se encuentra en {IM1}, un {IP2}% están en {IM2}, {IP3}% se encuentran en {IM3}, {IP4}% en {IM4}, {IP5}% en {IM5}, un {IP6}% se encuentran en {IM6} y un {IP7} están en {IM7}"
+  conclu_imc_1 = f"{IP1}% de la población se encuentra en {IM1}, un {IP2}% están en {IM2}, {IP3}% se encuentran en {IM3}, {IP4}% en {IM4}, un {IP5}% se encuentran en {IM5} y un {IP6} están en {IM6}"
+  conclu_imc_2 = f"{IP1}% de la población se encuentra en {IM1}, un {IP2}% están en {IM2}, {IP3}% se encuentran en {IM3}, un {IP4}% se encuentran en {IM4} y un {IP5} están en {IM5}"
+  conclu_imc_3 = f"{IP1}% de la población se encuentra en {IM1}, un {IP2}% están en {IM2}, un {IP3}% se encuentran en {IM3} y un {IP4} están en {IM4}"
+  conclu_imc_4 = f"{IP1}% de la población se encuentra en {IM1}, un {IP2}% están en {IM2} y un {IP3} están en {IM3}"
+  conclu_imc_5 = f"{IP1}% de la población se encuentra en {IM1} y un {IP2} están en {IM2}"
+  conclu_imc_6 = f"{IP1}% de la población se encuentra en {IM1}"
+  conclu_imc = [conclu_imc_0, conclu_imc_1, conclu_imc_2, conclu_imc_3, conclu_imc_4, conclu_imc_5, conclu_imc_6]
 
   ceros_imc = ceros(elementos_imc)
   conclusion_imc = intros_imc[random.randint(0, len(intros_imc)-1)] + conclu_imc[ceros_imc]
@@ -619,16 +623,16 @@ def main(indice_archivos):
   hoja_imc = plantilla["IMC"]
   elementos_imc.append(total_trabajadores)
   v_columnas_imc = "C"
-  V_filas_imc = [5, 6, 7, 8, 9, 10, 11]
+  V_filas_imc = [5, 6, 7, 8, 9, 10, 11, 12]
   v_valores_imc = elementos_imc
   porcentajes_imc.append(100)
   p_columnas_imc = "D"
-  p_filas_imc = [5, 6, 7, 8, 9, 10, 11]
+  p_filas_imc = [5, 6, 7, 8, 9, 10, 11, 12]
   p_valores_imc = porcentajes_imc
 
   editor_valores(hoja_imc, v_columnas_imc, V_filas_imc, v_valores_imc)
   editor_porcentajes(hoja_imc, p_columnas_imc, p_filas_imc, p_valores_imc)
-  editor_conclusion(hoja_imc, "B", 13, conclusion_imc)
+  editor_conclusion(hoja_imc, "B", 14, conclusion_imc)
 
   #### ACCIDENTES LABORALES ####
   accidentes = list(datos["obs_antecedpatocupacional"])
