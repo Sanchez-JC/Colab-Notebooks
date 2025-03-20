@@ -578,7 +578,7 @@ def main(indice_archivos):
   porcentaje_obesidad_2 = round(elementos_imc[4] / total_trabajadores * 100)
   porcentaje_obesidad_3 = round(elementos_imc[5] / total_trabajadores * 100)
   porcentaje_sin_informacion = round(elementos_imc[6] / total_trabajadores * 100)
-  porcentajes_imc = [porcentaje_bajo, porcentaje_normal, porcentaje_sobrepeso, porcentaje_obesidad_1, porcentaje_obesidad_2, porcentaje_obesidad_3]
+  porcentajes_imc = [porcentaje_bajo, porcentaje_normal, porcentaje_sobrepeso, porcentaje_obesidad_1, porcentaje_obesidad_2, porcentaje_obesidad_3, porcentaje_sin_informacion]
   orden_imc = ordenar(porcentajes_imc, etiquetas_imc)
 
   #Conclusión
