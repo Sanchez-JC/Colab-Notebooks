@@ -564,7 +564,7 @@ def main(indice_archivos):
   etiquetas_imc = ["Bajo Peso", "Normal", "Sobrepeso", "Obesidad I o Leve", "Obesidad II o Moderada", "Obesidad III o Severa", "Sin información"]
   elementos_imc = [sum(1 for i in imc if i <= 18), sum(1 for i in imc if 18 <= i < 25),
                    sum(1 for i in imc if 25 <= i < 30), sum(1 for i in imc if 30 <= i < 35),
-                   sum(1 for i in imc if 35 <= i < 40), sum(1 for i in imc if i >= 40), sum(1 for i in imc if type(i) != "float"]
+                   sum(1 for i in imc if 35 <= i < 40), sum(1 for i in imc if i >= 40), sum(1 for i in imc if type(i) != "float")]
 
   #Validación
   if sum(elementos_imc) != total_trabajadores:
