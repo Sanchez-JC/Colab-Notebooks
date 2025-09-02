@@ -820,5 +820,5 @@ def main(indice_archivos):
   editor_conclusion(hoja_patologias, "C", len(nombres_patologias) + 20, total_patologias)
 
   plantilla.save(ruta_datos[3:])
-  print("Archivo creado:", ruta_datos[3:])
+  print("Archivo creado:", ruta_datos[3:], end = "\n")
   return
